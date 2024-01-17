@@ -7,7 +7,7 @@ Imagine que você deve criar uma solução web para gerenciar e participar de se
 Essa solução deve ser executada na nuvem e promover as seguintes funcionalidades através de uma API REST:
 
 - Cadastrar uma nova pauta
-- Abrir uma sessão de votação em uma **pauta** (a sessão de votação deve ficar aberta por um tempo determinado na chamada de abertura ou 1 minuto por *default*)
+- Abrir uma sessão de votação em uma **pauta** (a sessão de votação deve ficar aberta por um tempo determinado na chamada de abertura ou 1 minuto por _default_)
 - Receber votos nas pautas (os votos são apenas 'Sim'/'Não'. Cada usuário é identificado por um id único e pode votar apenas uma vez por pauta)
 - Contabilizar os votos e dar o resultado da votação na pauta
 
@@ -30,8 +30,8 @@ Lembre-se de deixar todas as orientações necessárias para executar o seu cód
 - Criar cadastro de usuários para votação (apenas CPFs validos)
 - Adicionar usuários específicos como admin
 - Apenas usuários admin podem acessar alguns recursos
-    - Criar pautas
-    - Cadastrar usuários votantes
+- Criar pautas
+- Cadastrar usuários votantes
 
 ### Tarefa Bônus 2 - Performance
 
