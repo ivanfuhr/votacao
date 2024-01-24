@@ -1,0 +1,45 @@
+version: "3.8"
+services:
+  votacao-db:
+    container_name: votacao-db
+    image: postgres
+    restart: always
+    volumes:
+      - votacao-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    networks:
+      - local
+  votacao-api:
+    container_name: votacao-api
+    build: ./api
+    restart: "always"
+    volumes:
+      - .:/app
+    depends_on:
+      - votacao-db
+    expose:
+      - 3000:3000
+    networks:
+      - local
+  votacao-web:
+    container_name: votacao-web
+    build: ./web
+    restart: "always"
+    volumes:
+      - .:/app
+    depends_on:
+      - votacao-api
+    expose:
+      - 80:80
+volumes:
+  votacao-db:
+networks:
+  local:
+    driver: bridge
