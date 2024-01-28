@@ -2,7 +2,7 @@ version: "3.8"
 services:
   votacao-db:
     container_name: votacao-db
-    image: postgres
+    image: bitnami/postgresql:latest
     restart: always
     volumes:
       - votacao-db:/var/lib/postgresql/data
@@ -12,8 +12,9 @@ services:
       timeout: 5s
       retries: 10
     environment:
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root 
+      - POSTGRES_PASSWORD=root 
+      - POSTGRES_DB=votacao
     networks:
       - local
   votacao-api:
@@ -23,7 +24,7 @@ services:
     volumes:
       - .:/app
     depends_on:
-      - votacao-db
+      - votacao-db      
     expose:
       - 3000:3000
     networks:
@@ -42,4 +43,4 @@ volumes:
   votacao-db:
 networks:
   local:
-    driver: bridge
+    driver: bridge    
