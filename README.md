@@ -4,6 +4,9 @@
 
 Este projeto é uma aplicação de votação desenvolvida com o uso de Nest.js para o backend (API) e Angular para o frontend (web). Ele oferece uma maneira interativa e moderna de gerenciar votações online.
 
+Confira o projeto em ação no ambiente de produção:
+[https://votacao.ivanfuhr.com/](https://votacao.ivanfuhr.com/)
+
 ## Configuração do Ambiente
 
 ### Pré-Requisitos

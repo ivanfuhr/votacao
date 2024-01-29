@@ -5,7 +5,7 @@ services:
     image: bitnami/postgresql:latest
     restart: always
     volumes:
-      - votacao-db:/var/lib/postgresql/data
+      - votacao-db:/bitnami/postgresql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready"]
       interval: 1s
@@ -14,21 +14,19 @@ services:
     environment:
       - POSTGRES_USER=root 
       - POSTGRES_PASSWORD=root 
-      - POSTGRES_DB=votacao
-    networks:
-      - local
+      - POSTGRES_DB=votacao      
   votacao-api:
     container_name: votacao-api
     build: ./api
     restart: "always"
     volumes:
       - .:/app
+    links:
+      - votacao-db
     depends_on:
-      - votacao-db      
-    expose:
-      - 3000:3000
-    networks:
-      - local
+      - votacao-db          
+    ports:
+      - "3000:3000"
   votacao-web:
     container_name: votacao-web
     build: ./web
@@ -37,10 +35,7 @@ services:
       - .:/app
     depends_on:
       - votacao-api
-    expose:
-      - 80:80
+    ports:
+      - "80:80"
 volumes:
   votacao-db:
-networks:
-  local:
-    driver: bridge    
